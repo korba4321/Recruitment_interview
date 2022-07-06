@@ -1,12 +1,10 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ParserRomanToArabicTest {
 
     @Test
-    void parseRomanToArabicI() {
+    void parseRomanToArabicI() throws WrongRomanFormatException {
         //given
         String roman = "I";
 
@@ -18,7 +16,7 @@ class ParserRomanToArabicTest {
     }
 
     @Test
-    void parseRomanToArabicII() {
+    void parseRomanToArabicII() throws WrongRomanFormatException {
         //given
         String roman = "II";
 
@@ -31,7 +29,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicIII() {
+    void parseRomanToArabicIII() throws WrongRomanFormatException {
         //given
         String roman = "III";
 
@@ -45,7 +43,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicVI() {
+    void parseRomanToArabicVI() throws WrongRomanFormatException {
         //given
         String roman = "VI";
 
@@ -59,7 +57,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicVII() {
+    void parseRomanToArabicVII() throws WrongRomanFormatException {
         //given
         String roman = "VII";
 
@@ -73,7 +71,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicVIII() {
+    void parseRomanToArabicVIII() throws WrongRomanFormatException {
         //given
         String roman = "VIII";
 
@@ -86,7 +84,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicIX() {
+    void parseRomanToArabicIX() throws WrongRomanFormatException {
         //given
         String roman = "Ix";
 
@@ -100,7 +98,7 @@ class ParserRomanToArabicTest {
 
 
     @Test
-    void parseRomanToArabicXLIV() {
+    void parseRomanToArabicXLIV() throws WrongRomanFormatException {
         //given
         String roman = "xliv";
 
@@ -112,7 +110,7 @@ class ParserRomanToArabicTest {
     }
 
     @Test
-    void parseRomanToArabicMCMLXXXVI() {
+    void parseRomanToArabicMCMLXXXVI() throws WrongRomanFormatException {
         //given
         String roman = "MCMLXXXVI";
 
@@ -123,8 +121,66 @@ class ParserRomanToArabicTest {
         Assertions.assertEquals(1986, result);
     }
 
+    @Test
+    void parseRomanToArabicIIII()  {
+        //given
+        String roman = "IIII";
 
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
 
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicIL() {
+        //given
+        String roman = "IL";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicLL() {
+        //given
+        String roman = "LL";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class,
+                () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicVV() {
+        //given
+        String roman = "vv";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicDMM() {
+        //given
+        String roman = "DMM";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
 
 
 }

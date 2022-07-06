@@ -1,5 +1,5 @@
 public class ParserRomanToArabic {
-    static int parsRomanToArabic(String roman) {
+    static int parsRomanToArabic(String roman) throws WrongRomanFormatException {
         roman = roman.toUpperCase();
 
         int result = 0;
@@ -30,8 +30,7 @@ public class ParserRomanToArabic {
             if(lastValue == toAdd){
                 numberOfLastValues++;
                 if(numberOfLastValues > 3){
-                    System.out.println("Zly format");
-                    break;
+                    throw new WrongRomanFormatException();
                 }
             }
             else
