@@ -182,5 +182,64 @@ class ParserRomanToArabicTest {
         Assertions.assertNull(thrown.getMessage());
     }
 
+    @Test
+    void parseRomanToArabicABC(){
+        //given
+        String roman = "abc";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabic123(){
+        //given
+        String roman = "123";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicSpace(){
+        //given
+        String roman = " ";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicVX() {
+        //given
+        String roman = "vx";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
+
+    @Test
+    void parseRomanToArabicLDI() {
+        //given
+        String roman = "LDI";
+
+        //when
+        //then
+        WrongRomanFormatException thrown = Assertions.assertThrows(WrongRomanFormatException.class, () -> ParserRomanToArabic.parsRomanToArabic(roman));
+
+        Assertions.assertNull(thrown.getMessage());
+    }
 
 }

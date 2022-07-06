@@ -1,15 +1,16 @@
 public class ParserRomanToArabic {
     static int parsRomanToArabic(String roman) throws WrongRomanFormatException {
-        roman = roman.toUpperCase();
+        String upperRoman = roman.toUpperCase();
+
+        RomanValidator validator = new RomanValidator();
+        validator.validate(upperRoman);
 
         int result = 0;
         int lastMax = 0;
-        int lastValue = 0;
-        int numberOfLastValues = 1;
 
-        for(int i=roman.length()-1; i>=0; i--) {
+        for(int i=upperRoman.length()-1; i>=0; i--) {
             int toAdd;
-            switch (roman.charAt(i)){
+            switch (upperRoman.charAt(i)){
                 case 'I': toAdd = 1; break;
                 case 'V': toAdd = 5; break;
                 case 'X': toAdd = 10; break;
@@ -27,16 +28,6 @@ public class ParserRomanToArabic {
             }
             lastMax = Math.max(toAdd, lastMax);
 
-            if(lastValue == toAdd){
-                numberOfLastValues++;
-                if(numberOfLastValues > 3){
-                    throw new WrongRomanFormatException();
-                }
-            }
-            else
-                numberOfLastValues = 1;
-
-            lastValue = toAdd;
         }
 
         return result;
